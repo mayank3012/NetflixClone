@@ -6,5 +6,10 @@ export default async function hanler(req: NextApiRequest, res: NextApiResponse) 
     if (req.method !== 'POST') {
         return res.status(405).end();
     }
+    try {
 
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
