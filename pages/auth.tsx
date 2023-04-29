@@ -7,6 +7,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaGithub } from 'react-icons/fa'
 import Spinner from "@/components/Spinner";
 import Alert from "@/components/Alert";
+import client from "@/libs/prismadb";
 
 
 const Auth = () => {
@@ -117,8 +118,8 @@ const Auth = () => {
                             />
                         </div>
                         <button disabled={showSpinner} onClick={variant === 'login' ? login : register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition disabled:bg-red-950 disabled:cursor-not-allowed">
-                            {showSpinner &&
-                                <Spinner size={1} />
+                            {!showSpinner &&
+                                <Spinner size={4} />
                             }
                             {variant === 'login' ? 'Login' : 'Register'}
                         </button>
