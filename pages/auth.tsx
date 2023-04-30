@@ -118,7 +118,7 @@ const Auth = () => {
                             />
                         </div>
                         <button disabled={showSpinner} onClick={variant === 'login' ? login : register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition disabled:bg-red-950 disabled:cursor-not-allowed">
-                            {!showSpinner &&
+                            {showSpinner &&
                                 <Spinner size={4} />
                             }
                             {variant === 'login' ? 'Login' : 'Register'}

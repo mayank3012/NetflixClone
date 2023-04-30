@@ -6,7 +6,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        zoomin: {
+          '0%': { transform: 'scale(0)' },
+          '100%': { tansform: 'scale(1)' }
+        },
+      },
+      animation: {
+        'zoom-in': 'zoomin 200ms ease-out',
+      },
+    },
   },
   plugins: [],
 }
