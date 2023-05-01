@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'short': { 'raw': '(max-height: 600px)' },
+        'xshort': { 'raw': '(max-height: 400px)' },
+        // => @media (min-height: 800px) { ... }
+      },
       keyframes: {
         zoomin: {
           '0%': { transform: 'scale(0)' },

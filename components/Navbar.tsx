@@ -1,6 +1,5 @@
 import MobileMenu from "./MobileMenu"
 import NavItems from "./NavItems"
-import { AiOutlineDown } from 'react-icons/ai'
 import { BsSearch, BsBell } from 'react-icons/bs'
 import { useState, useEffect, useCallback } from 'react';
 import { mainNavMenu } from "@/utils/navMenus";
@@ -10,7 +9,25 @@ import AccountMenu from "./AccountMenu";
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [showAccountMenu, setShowAccountMenu] = useState(false);
+    const [showBackground, setShowBackground] = useState(false);
 
+    const TOP_OFFSET = 66;
+
+    useEffect(() => {
+        const toggleNavBG = () => {
+            if (window.scrollY > TOP_OFFSET) {
+                setShowBackground(true);
+            } else {
+                setShowBackground(false);
+            }
+        }
+
+        window.addEventListener('scroll', toggleNavBG);
+
+        return () => {
+            window.removeEventListener('scroll', toggleNavBG);
+        }
+    })
     const toggleMobileView = useCallback(() => {
         setShowMobileMenu(current => !current);
         setShowAccountMenu(false);
@@ -22,7 +39,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <nav className="h-16 w-full items-center py-6 px-4 md:px-10 opacity-90 fixed flex flex-row z-10 bg-black gap-8">
+        <nav className={`w-full items-center py-6 px-4 md:px-10 fixed flex flex-row z-10 ${showBackground ? 'bg-zinc-800 opacity-90' : ''} gap-8`}>
             <div>
                 <img src="/images/logo.png" className="h-4 md:h-7" alt="logo" />
             </div>
